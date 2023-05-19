@@ -5,7 +5,5 @@
 
   <hr>
 
-  <ul>
-    <li><a href="{{route('admin.projects.index')}}">Mostra tutti i progetti</a></li>
-  </ul>
+  <a href="{{route('admin.projects.index')}}" type="button" class="btn btn-primary mt-3">Vai a tutti i progetti</a>
 @endsection
