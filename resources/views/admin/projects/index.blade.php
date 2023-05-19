@@ -16,7 +16,7 @@
     @foreach($projects as $project)
     <tr >
       <td>{{$project->title}}</td>
-      <td>{{$project->content}}</td>
+      <td>{{$project->description}}</td>
       <td>{{$project->slug}}</td>
       <td>{{$project->github_repository}}</td>
       <td><a href="{{route('admin.projects.show', $project->slug)}}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
