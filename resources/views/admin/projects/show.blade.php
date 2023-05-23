@@ -2,16 +2,19 @@
 
 @section('content')
 
-<div class="main pt-5">
-  <h1>{{$project->title}}</h1>
-  <hr>
-  <span>Descrizione:</span>
-  <p>{{$project->description}}</p>
-  <span>Link Repository Github:</span>
-  <p>{{$project->github_repository}}</p>
-  <span>Slug:</span>
-  <p>{{$project->slug}}</p>
+<div class="container">
+  <div class="main">
+    <h1>{{$project->title}}</h1>
+    <hr>
+    <span>Descrizione:</span>
+    <p>{{$project->description}}</p>
+    <span>Link Repository Github:</span>
+    <p>{{$project->github_repository}}</p>
+    <span>Slug:</span>
+    <p>{{$project->slug}}</p>
+  </div>
 </div>
+
 
 <div class="container mt-5 mb-5 d-flex justify-content-around">
   <a href="{{route('admin.projects.index')}}"><button class="btn btn-primary">Torna indietro</button></a>

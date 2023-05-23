@@ -1,5 +1,14 @@
+@php
+    
+$routeName = Route::currentRouteName();
+function routeNameContains($string) {
+    return str_contains( Route::currentRouteName(), $string);
+}
+
+@endphp
+
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
@@ -23,13 +32,43 @@
 </head>
 
 <body>
-  <div>
+  @include('partials/navbar')
+  <div id="admin-layout">
+    <aside id="admin-sidebar"> 
+      <div class="card {{ $routeName == 'admin.home' ? 'border-primary' : '' }}">
+          <div class="card-header {{ $routeName == 'admin.home' ? 'text-primary' : '' }}">
+            Dashboard
+          </div>
+          <div class="list-group list-group-flush">
+              <a href="{{route('admin.home')}}" class="list-group-item list-group-item-action  {{routeNameContains('admin.home') ? 'active' : ''}}">Home</a>
+          </div>
+      </div>
+
+        <div class="card {{ routeNameContains('projects.') ? 'border-primary' : '' }}">
+            <div class="card-header {{ routeNameContains('projects.') ? 'text-primary' : '' }}">
+              Progetti
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{{route('admin.projects.index')}}" class="list-group-item list-group-item-action {{routeNameContains('projects.index') ? 'active' : ''}}">Tutti i progetti</a>
+                <a href="{{route('admin.projects.create')}}" class="list-group-item list-group-item-action {{routeNameContains('projects.create') ? 'active' : ''}}">Aggiungi un progetto</a>
+            </div>
+        </div>
+
+    </aside>
+    <main>
+        @yield('content')
+    </main>
+  </div>
+  @include('partials/footer')
+
+
+  {{-- <div>
     @include('partials/navbar')
     <main class="container">
         @yield('content')
     </main>
     @include('partials/footer')
-  </div>
+  </div> --}}
 </body>
 
 </html>
